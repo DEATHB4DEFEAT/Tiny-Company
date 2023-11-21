@@ -30,8 +30,8 @@ public class Plugin : BaseUnityPlugin
     {
         Log.LogInfo("Loading Tinyifier script...");
         _object = new GameObject("Tinyifier");
-        DontDestroyOnLoad(_object);
         _object.AddComponent<Tinyifier>();
+        DontDestroyOnLoad(_object);
         Log.LogInfo("Loaded Tinyifier script!");
 
         Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} has loaded!");

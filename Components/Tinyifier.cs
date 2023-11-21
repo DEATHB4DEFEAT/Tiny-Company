@@ -11,7 +11,6 @@ public class Tinyifier : MonoBehaviour
 
         foreach (var player in players)
         {
-            Plugin.Log.LogMessage("Tinyifier Update player");
             if (player == null ||
                 player.gameObject.GetComponentInChildren<TinyifierScript>() != null)
                 continue;
