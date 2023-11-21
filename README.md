@@ -10,7 +10,7 @@ A simple mod that allows players to change their size in-game by pressing F4 ((w
 - [x] Okay looking UI
 - [x] User error prevention
 - [ ] Keybind configuration
-- [ ] Multiplayer syncing
-- [ ] Fix POV arms
 - [ ] Prevent keybind overlap
+- [ ] Multiplayer syncing
 - [x] Reasonably scale move speed, stamina, and jump height based on size
+- [ ] Configurable random size for enemies
