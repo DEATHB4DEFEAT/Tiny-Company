@@ -7,7 +7,8 @@ namespace TinyCompany.Components;
 public class ScaleUIController : MonoBehaviour
 {
     public PlayerControllerB player;
-    private Vector3 _scale = Vector3.one;
+    public Vector3 scale = Vector3.one;
+    public float ScaleAverage => (scale.x + scale.y + scale.z) / 3;
     private bool _showUI;
     public static bool IsUIActive { get; private set; }
     private const int UIWidth = 600;
@@ -40,14 +41,14 @@ public class ScaleUIController : MonoBehaviour
     /// </summary>
     public void ApplyScale()
     {
-        if (_scale.x == 0 || _scale.y == 0 || _scale.z == 0)
+        if (scale.x == 0 || scale.y == 0 || scale.z == 0)
         {
-            Plugin.Log.LogWarning($"Player tried to set their scale to {_scale}, which is invalid. Setting to {Vector3.one} instead.");
-            _scale = Vector3.one;
+            Plugin.Log.LogWarning($"Player tried to set their scale to {scale}, which is invalid. Setting to {Vector3.one} instead.");
+            scale = Vector3.one;
         }
 
-        Plugin.Log.LogInfo($"Applying scale {_scale}.");
-        player.transform.localScale = _scale;
+        Plugin.Log.LogInfo($"Applying scale {scale}.");
+        player.transform.localScale = scale;
     }
 
 
@@ -107,11 +108,11 @@ public class ScaleUIController : MonoBehaviour
         GUI.skin.textField.fontSize = 38;
         GUILayout.BeginHorizontal();
         GUILayout.Label("X", GUILayout.Width(30));
-        _scale.x = ParseInput(GUILayout.TextField(GetDisplayString(_scale.x), GUILayout.Height(50)));
+        scale.x = ParseInput(GUILayout.TextField(GetDisplayString(scale.x), GUILayout.Height(50)));
         GUILayout.Label("Y", GUILayout.Width(30));
-        _scale.y = ParseInput(GUILayout.TextField(GetDisplayString(_scale.y), GUILayout.Height(50)));
+        scale.y = ParseInput(GUILayout.TextField(GetDisplayString(scale.y), GUILayout.Height(50)));
         GUILayout.Label("Z", GUILayout.Width(30));
-        _scale.z = ParseInput(GUILayout.TextField(GetDisplayString(_scale.z), GUILayout.Height(50)));
+        scale.z = ParseInput(GUILayout.TextField(GetDisplayString(scale.z), GUILayout.Height(50)));
         GUILayout.EndHorizontal();
 
         // Apply button
