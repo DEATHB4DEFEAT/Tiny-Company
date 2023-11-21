@@ -18,9 +18,8 @@ public class Tinyifier : MonoBehaviour
             if (!player.IsOwner || !player.isPlayerControlled)
                 continue;
 
-            Plugin.Log.LogMessage("Adding TinyifierScript to a player");
             player.gameObject.AddComponent<TinyifierScript>().player = player;
-            Plugin.Log.LogMessage("Added TinyifierScript to a player");
+            Plugin.Log.LogInfo("Added TinyifierScript to a player");
         }
     }
 
@@ -34,7 +33,7 @@ public class Tinyifier : MonoBehaviour
             if (script == null)
                 continue;
 
-            Plugin.Log.LogMessage("Destroying Tinyifier");
+            Plugin.Log.LogMessage("Destroying Tinyifier on a player");
             Destroy(script);
         }
     }

@@ -1,4 +1,3 @@
-using System;
 using GameNetcodeStuff;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,18 +18,9 @@ public class TinyifierScript : MonoBehaviour
 
     public void Update()
     {
-        if (scaleUIController.IsUIActive())
-            return;
-
-        if (Keyboard.current.f4Key.wasPressedThisFrame)
+        if (!ScaleUIController.IsUIActive && Keyboard.current.f4Key.wasPressedThisFrame)
         {
-            Plugin.Log.LogWarning("F4 pressed, showing UI...");
             scaleUIController.ShowUI();
         }
-    }
-
-    public void OnDestroy()
-    {
-        Plugin.Log.LogFatal("TinyifierScript.OnDestroy() called!");
     }
 }
