@@ -24,10 +24,15 @@ public class TinyifierScript : MonoBehaviour
             scaleUIController.ShowUI();
         }
 
-        // Change player speed and jump height based on scale
-        player.movementSpeed = 4.6f * scaleUIController.ScaleAverage;
-        // player.drunknessSpeed = 0.4f * scaleUIController.ScaleAverage; // TODO What does this do? I'm leaving this untouched until I figure it out
-        player.climbSpeed = 3f * scaleUIController.ScaleAverage;
-        player.jumpForce = 13f * scaleUIController.ScaleAverage;
+        // Halve the change caused by scaling
+        var scaleChange = scaleUIController.ScaleAverage - 1f;
+        var adjustedScale = 1f + (scaleChange * 0.5f);
+
+        // Change player speed and jump height based on adjusted scale
+        player.movementSpeed = 4.6f * adjustedScale;
+        player.climbSpeed = 3f * adjustedScale;
+        player.sprintTime = 11f / adjustedScale;
+        player.jumpForce = 13f * adjustedScale;
+        player.grabDistance = 3f * adjustedScale;
     }
 }
